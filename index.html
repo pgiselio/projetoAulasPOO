@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./tabStyle.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="Aluno.js" defer></script>
+    <script src="Interface.js" defer></script>
+    <script src="main.js" defer></script>
+    <title>Sistema Escolar</title>
+  </head>
+  <body>
+    <!-- Botões para trocar de aba -->
+
+    <div class="container">
+      <div class="tabs-container">
+        <button
+          class="tab-button active"
+          id="btn-cadastrar"
+          onclick="Interface.cadastrar()"
+        >
+          Cadastrar
+        </button>
+        <button class="tab-button" id="btn-listar" onclick="listarAluno()">
+          Listar Alunos
+        </button>
+      </div>
+
+      <!-- Conteúdo da Aba 1: Cadastrar -->
+      <form id="tab-cadastrar" class="tab-content active">
+        <label for="nome">Nome: </label>
+        <input id="nome" type="text" />
+        <label for="n1"> Nota 1:</label>
+        <input id="n1" type="text" />
+        <label for="n2">Nota 2:</label>
+        <input id="n2" type="text" />
+        <label for="n3">Nota 3:</label>
+        <input id="n3" type="text" />
+        <button type="submit" class="btn-salvar">Salvar Aluno</button>
+      </form>
+
+      <!-- Conteúdo da Aba 2: Listar -->
+      <div id="tab-listar" class="tab-content">
+        <h3>Alunos Cadastrados</h3>
+        <ul class="lista-alunos" id="alunos">
+          <!-- O JavaScript vai colocar os alunos aqui depois -->
+          <li>Nenhum aluno cadastrado ainda.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
