@@ -2,77 +2,117 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <!-- <link rel="stylesheet" href="./css/bootstrap.min.css"> -->
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="stylesheet" href="./tabStyle.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Escolar</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./tabStyle.css">
   <script src="Turma.js" defer></script>
   <script src="Aluno.js" defer></script>
   <script src="Interface.js" defer></script>
 
   <script src="main.js" defer></script>
-  <title>Sistema Escolar</title>
-
-  <link href="./fontAwesome/css/fontawesome.css" rel="stylesheet" />
-  <link href="./fontAwesome/css/brands.css" rel="stylesheet" />
-  <link href="./fontAwesome/css/solid.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./fontAwesome/css/fontawesome.css">
+  <link rel="stylesheet" href="./fontAwesome/css/brands.css">
+  <link rel="stylesheet" href="./fontAwesome/css/solid.css">
 </head>
 
 <body>
-  <!-- Botões para trocar de aba -->
 
-  <div class="container">
-    
-
-    <div class="turma">
-
-      <div class="tabs-container">
-        <button class="tab-button active" id="btn-cadastrar" onclick="Interface.cadastrar()">
-          Cadastrar
-        </button>
-        <button class="tab-button" id="btn-listar" onclick="listarAluno()">
-          Listar Alunos
-        </button>
-      </div>
-
-      <!-- Conteúdo da Aba 1: Cadastrar -->
-      <form id="tab-cadastrar-aluno" class="tab-content active">
-        <label for="nome">Nome: </label>
-        <input id="nome" type="text" />
-        <label for="n1"> Nota 1:</label>
-        <input id="n1" type="text" />
-        <label for="n2">Nota 2:</label>
-        <input id="n2" type="text" />
-        <label for="n3">Nota 3:</label>
-        <input id="n3" type="text" />
-        <button type="submit" class="btn-salvar">Salvar Aluno</button>
+  <main class="container">
+    <header class="nav">
+      <h1 class="logo">Sistema Escolar</h1>
+    </header>
+    <section class="turmas" id="area-turmas" aria-labelledby="titulo-turmas">
+      <form id="cadastrar-turma">
+        <h2 id="titulo-turmas">Cadastro de turma</h2>
+        <label for="curso">Curso:</label>
+        <input id="curso" name="curso" type="text" required maxlength="100">
+        <label for="professor">Professor:</label>
+        <input id="professor" name="professor" type="text" required maxlength="100">
+        <button type="submit" class="btn-salvar">Cadastrar turma</button>
       </form>
 
-      <div>
-        <h3>Alunos Cadastrados</h3>
-        <div class="lista-alunos table-responsive" id="alunos">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Nome</th>
-                <th scope="col" class="col-nota">N1</th>
-                <th scope="col" class="col-nota">N2</th>
-                <th scope="col" class="col-nota">N3</th>
-                <th scope="col" class="col-nota">Media</th>
-                <th scope="col" class="col-situacao">Situação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td colspan="6" align="center">Nenhum aluno cadastrado.</td>
-              </tr>
-            </tbody>
-          </table>
+      <h2>Turmas cadastradas</h2>
+      <div class="lista-alunos table-responsive" id="lista-turmas">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Curso</th>
+              <th scope="col">Professor</th>
+              <th scope="col">Qtd. Alunos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3" class="text-center">Nenhuma turma cadastrada.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="turma" id="area-alunos" hidden aria-labelledby="titulo-alunos">
+      <div class="turma-atual">
+        <div class="info">
+          <div>Turma: <strong id="turma-atual-curso"></strong></div>
+          <div>Professor(a): <span id="turma-atual-professor"></span></div>
+        </div>
+
+        <button type="button" class="btn-trocar-turma" onclick="trocarTurma()">
+          Trocar turma <i class="fa-solid fa-left-right fa-sm"></i>
+        </button>
+      </div>
+
+      <div class="conteudo-principal">
+
+        <nav class="tabs-container" aria-label="Seções de alunos">
+          <button type="button" class="tab-button active" id="btn-cadastrar" onclick="Interface.cadastrar()">
+            Cadastrar
+          </button>
+          <button type="button" class="tab-button" id="btn-listar" onclick="listarAluno()">
+            Listar Alunos
+          </button>
+        </nav>
+
+        <!-- Conteúdo da Aba 1: Cadastrar -->
+        <form id="tab-cadastrar-aluno" class="tab-content active">
+          <label for="nome">Nome:</label>
+          <input id="nome" name="nome" type="text" required maxlength="100">
+          <label for="n1">Nota 1:</label>
+          <input id="n1" name="n1" type="number" min="0" max="10" step="0.01" required>
+          <label for="n2">Nota 2:</label>
+          <input id="n2" name="n2" type="number" min="0" max="10" step="0.01" required>
+          <label for="n3">Nota 3:</label>
+          <input id="n3" name="n3" type="number" min="0" max="10" step="0.01" required>
+          <button type="submit" class="btn-salvar">Salvar Aluno</button>
+        </form>
+
+        <div id="tab-listar" class="tab-content">
+          <h3>Alunos Cadastrados</h3>
+          <div class="lista-alunos table-responsive" id="lista-alunos">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col" class="col-nota">N1</th>
+                  <th scope="col" class="col-nota">N2</th>
+                  <th scope="col" class="col-nota">N3</th>
+                  <th scope="col" class="col-nota">Média</th>
+                  <th scope="col" class="col-situacao">Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6" class="text-center">Nenhum aluno cadastrado.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </body>
 
 </html>

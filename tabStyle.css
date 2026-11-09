@@ -25,6 +25,13 @@ td {
   color: #333;
 }
 
+.link-turma {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 /* Efeito ao passar o mouse */
 tr:hover td {
   background-color: #f8f9fa;

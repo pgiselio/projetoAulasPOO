@@ -3,20 +3,54 @@ body {
   font-family: Arial, sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  padding: 20px;
   margin: 0 auto;
-  gap: 15px;
   max-width: 950px;
 }
 
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.gap-1{
+  gap: 15px;
+}
+
+.nav {
+  border-bottom: 1px solid #CCC;
+  padding: 10px;
+}
+
+.nav .logo {
+  font: 32px bold;
+  margin-bottom: 0;
+}
+
 #tab-cadastrar-aluno,
-.tabs-container, #cadastrar-turma {
+.tabs-container,
+#cadastrar-turma {
   width: 350px;
   align-self: center;
   max-width: 100%;
+}
+
+#cadastrar-turma:not([hidden]) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .table-responsive {
@@ -30,6 +64,11 @@ body {
   width: 100%;
   border-collapse: collapse;
 }
+*:focus {
+    outline: 4px solid rgba(110, 138, 62, 0.534);
+    transition: outline-width .05s ease-in;
+}
+
 
 /* Container dos botões das abas */
 .tabs-container {
@@ -87,6 +126,7 @@ input:focus {
   border-color: #007bff;
 }
 
+
 /* Botão simples para salvar o cadastro */
 .btn-salvar {
   padding: 10px;
@@ -112,4 +152,46 @@ input:focus {
 
 dt {
   font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}
+
+.turma-atual {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid #CCC;
+  padding: 16px;
+  margin-bottom: 10px;
+  background-color: #f6f6f6;
+}
+
+
+.btn-trocar-turma {
+    background-color: #28a745;
+    border: 0;
+    outline: 0 solid #28a74649;
+    border-radius: 40px;
+    font-size: 14px;
+    color: #fff;
+    padding: 8px 20px;
+    transition: outline-width .05s ease-in;
+    font-weight: bold;
+}
+
+.btn-trocar-turma:hover {
+    background-color: #248d3c;
+}
+
+.btn-trocar-turma:active {
+    background-color: #2fc051;
+}
+
+.btn-trocar-turma:focus,
+.btn-trocar-turma:focus-visible {
+    outline-width: 4px;
 }

@@ -2,7 +2,7 @@ class Interface {
   constructor() {}
 
   static init() {
-    const tabelaAlunos = document.getElementById("alunos");
+    const tabelaAlunos = document.getElementById("lista-alunos");
 
     tabelaAlunos?.addEventListener("input", (e) => {
       Interface.editarCampo(e);
@@ -22,6 +22,12 @@ class Interface {
     if (!aluno) return;
 
     const valor = Number(field.value);
+    if (!Number.isFinite(valor) || valor < 0 || valor > 10) {
+      field.setCustomValidity("A nota deve estar entre 0 e 10.");
+      return;
+    }
+    field.setCustomValidity("");
+
     if (fieldName === "n1") aluno.setNota1(valor);
     if (fieldName === "n2") aluno.setNota2(valor);
     if (fieldName === "n3") aluno.setNota3(valor);
@@ -51,7 +57,7 @@ class Interface {
     let n2 = Number(document.getElementById("n2").value);
     let n3 = Number(document.getElementById("n3").value);
     let a1 = new Aluno(nome, n1, n2, n3);
-    let m = a1.gerarMedia();
+    a1.gerarMedia();
     a1.gerarEstado();
     return a1;
   }
@@ -75,7 +81,7 @@ class Interface {
       turma.forEach((a, index) => {
         alunos += `
           <tr id="aluno-${index}"> 
-            <td scope="row">${a.getNome()}</th> 
+            <td scope="row">${a.getNome()}</td> 
             <td><input type="text" data-campo="n1" value="${a.getNota1()}"/></td> 
             <td><input type="text" data-campo="n2" value="${a.getNota2()}"/></td> 
             <td><input type="text" data-campo="n3" value="${a.getNota3()}"/></td>
@@ -98,7 +104,7 @@ class Interface {
             <th scope="col" class="col-nota">N1</th> 
             <th scope="col" class="col-nota">N2</th> 
             <th scope="col" class="col-nota">N3</th>
-            <th scope="col" class="col-nota">Media</th> 
+            <th scope="col" class="col-nota">Média</th> 
             <th scope="col" class="col-situacao">Situação</th>
           </tr>
           </thead>
@@ -107,7 +113,7 @@ class Interface {
         </tbody>
       </table>
     `;
-    document.getElementById("alunos").innerHTML = lista;
+    document.getElementById("lista-alunos").innerHTML = lista;
   }
 
   static cadastrar() {

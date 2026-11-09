@@ -7,5 +7,9 @@ class Turma {
         this.professor = professor;
         this.curso = curso;
     }
+
+    getQtdAlunos() {
+        return this.alunos.length;
+    }
    
 }
