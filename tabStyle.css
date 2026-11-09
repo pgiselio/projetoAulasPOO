@@ -1,43 +1,63 @@
 /* Tabela de alunos */
-#alunos table {
+table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
   text-align: left;
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
 }
 
 /* Cabeçalho */
-#alunos th {
+th {
   background-color: #f1f3f5;
   color: #333;
   padding: 14px 12px;
   font-weight: bold;
   text-align: left;
+  border-radius:  inherit;
 }
 
 /* Células dos alunos */
-#alunos td {
+td {
   padding: 14px 12px;
   border-bottom: 1px solid #e5e5e5;
   color: #333;
 }
 
 /* Efeito ao passar o mouse */
-#alunos tr:hover td {
+tr:hover td {
   background-color: #f8f9fa;
 }
 
-/* Alinhamento da média */
-#alunos th:nth-child(2),
-#alunos td:nth-child(2) {
-  text-align: center;
-}
-
 /* Cantos arredondados do cabeçalho */
-#alunos th:first-child {
+th:first-child {
   border-radius: 8px 0 0 0;
 }
 
-#alunos th:last-child {
+th:last-child {
   border-radius: 0 8px 0 0;
+}
+
+.col-nota {
+  width: 48px;
+  min-width: 48px;
+}
+
+.col-situacao {
+  width: 110px;
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+.estado-aprovado {
+  color: #198754;
+}
+
+.estado-recuperacao {
+  color: #ffc107;
+}
+
+.estado-reprovado {
+  color: #dc3545;
 }

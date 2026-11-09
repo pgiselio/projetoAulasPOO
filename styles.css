@@ -12,11 +12,23 @@ body {
   max-width: 950px;
 }
 
-#tab-cadastrar,
-.tabs-container {
+#tab-cadastrar-aluno,
+.tabs-container, #cadastrar-turma {
   width: 350px;
   align-self: center;
   max-width: 100%;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 /* Container dos botões das abas */
@@ -96,4 +108,8 @@ input:focus {
   padding: 8px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
+}
+
+dt {
+  font-weight: bold;
 }

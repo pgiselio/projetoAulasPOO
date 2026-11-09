@@ -21,7 +21,7 @@ class Aluno {
     let m;
     if (media) m = media;
     else {
-      if (!this.media) this.gerarMedia();
+      if (this.media === undefined) this.gerarMedia();
       m = this.media;
     }
 
